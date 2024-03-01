@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class = "row">
+<div class="row">
   <h1> Pets </h1>
 
   {% for pet in pets %}
@@ -16,7 +16,7 @@
     </div>
 
     <!-- name of pet and if available -->
-    <div><span class = 'text-success'>{{ pet.name }}</span>
+    <div><span class='text-success'>{{ pet.name }}</span>
       is
       {% if pet.available %}
 
@@ -37,7 +37,7 @@
   {% endfor %}
 
   <!-- this is for adding a pet -->
-  <a href="#" class = 'btn btn-primary'>Add a Pet</a>
+  <a href="/add" class='btn btn-primary'>Add a Pet</a>
 
 </div>
 {% endblock %}
