@@ -2,6 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+DEFAULT_IMAGE_URL = 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg'
+
+
 def connect_db(app):
     """Connect to database."""
     app.app_context().push()
@@ -16,40 +19,39 @@ class Pet(db.Model):
 
     id = db.Column(
         db.Integer,
-        primary_key = True,
-        autoincrement = True
+        primary_key=True,
+        autoincrement=True
     )
+
 
     name = db.Column(
         db.Text,
-        nullable = False
+        nullable=False
     )
 
     species = db.Column(
         db.Text,
-        nullable = False
+        nullable=False
     )
 
-    photo_url = db.Column(
+    photo = db.Column(
         db.Text,
-        nullable = True,
-        default = ''
+        nullable=True,
+        default=DEFAULT_IMAGE_URL
     )
 
     age = db.Column(
         db.Text,
-        nullable = False
+        nullable=False
     )
-
+    # default = '' nullable = false, better to deal with empty strings than null
     notes = db.Column(
         db.Text,
-        nullable = True
+        nullable=True
     )
 
     available = db.Column(
         db.Boolean,
-        nullable = False,
-        default = True
+        nullable=False,
+        default=True
     )
-
-

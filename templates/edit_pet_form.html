@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ pet.name }}</h1>
+<p>{{pet.name}} is a {{ pet.age }} and is a {{ pet.species }}</p>
+<img src="{{ pet.photo }}" alt="photo of {{ pet.name }}">
+
+
+
+<form id="edit-pets-form">
+  {{ form.hidden_tag() }} <!--add type=hidden form fields -->
+
+  {% for field in form
+  if field.widget.input_type != 'hidden' %}
+
+  <p class="mt-3">
+    {{ field.label }}
+    {{ field }}
+
+    {% for error in field.errors %}
+    {{ error }}
+    {% endfor %}
+  </p>
+
+  {% endfor %}
+
+  <a class="btn btn-outline-secondary" href="/">Cancel</a>
+  <button class="btn btn-success" formaction="/{{ pet.id }}" formmethod="POST">Add</button>
+
+</form>
+
+
+{% endblock %}

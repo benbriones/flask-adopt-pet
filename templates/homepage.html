@@ -6,17 +6,16 @@
   <h1> Pets </h1>
 
   {% for pet in pets %}
+
   <div>
+    <div class='col-3'>
 
-    <div>
-
-
-      <img src="{{ pet.photo_url }}" alt="picture of {{ pet.name }}">
+      <img src="{{ pet.photo }}" alt="picture of {{ pet.name }}">
 
     </div>
 
     <!-- name of pet and if available -->
-    <div><span class='text-success'>{{ pet.name }}</span>
+    <div><a href="/{{pet.id}}"><span class='text-success'>{{ pet.name }}</span></a>
       is
       {% if pet.available %}
 
@@ -29,15 +28,14 @@
       {% endif %}
 
     </div>
-
   </div>
 
+</div>
 
+{% endfor %}
 
-  {% endfor %}
-
-  <!-- this is for adding a pet -->
-  <a href="/add" class='btn btn-primary'>Add a Pet</a>
+<!-- this is for adding a pet -->
+<a href="/add" class='btn btn-primary'>Add a Pet</a>
 
 </div>
 {% endblock %}
